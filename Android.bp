@@ -35,14 +35,19 @@ android_app {
     ],
 
     required: [
-        "preinstalled-packages-platform-dolby.xml",
+        "preinstalled-packages-platform-lunarisdolby.xml",
         "privapp-permissions-dolby.xml",
     ],
 }
 
+// Renamed from preinstalled-packages-platform-dolby.xml: hardware/xiaomi/dolby
+// (XiaomiDolby, unused but always Soong-parsed since it's part of the
+// hardware_xiaomi manifest project) defines a module with that exact name,
+// which collides at Android.bp registration time regardless of whether
+// XiaomiDolby is actually in PRODUCT_PACKAGES.
 prebuilt_etc {
-    name: "preinstalled-packages-platform-dolby.xml",
-    src: "preinstalled-packages-platform-dolby.xml",
+    name: "preinstalled-packages-platform-lunarisdolby.xml",
+    src: "preinstalled-packages-platform-lunarisdolby.xml",
     sub_dir: "sysconfig",
     system_ext_specific: true,
 }
