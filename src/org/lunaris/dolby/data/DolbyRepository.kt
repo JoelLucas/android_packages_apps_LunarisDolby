@@ -507,14 +507,11 @@ class DolbyRepository(private val context: Context) : AutoCloseable {
         }
     }
 
+    // Read from prefs like the bass level. Reading it back from the DAP kept the surround strength
+    // slider at its old value, so it could not be dragged.
     fun getStereoWideningAmount(profile: Int): Int {
         if (!stereoWideningSupported) return 0
-        return try {
-            dolbyEffect.getDapParameterInt(DsParam.STEREO_WIDENING_AMOUNT, profile)
-        } catch (e: Exception) {
-            DolbyConstants.dlog(TAG, "Error getting stereo widening: ${e.message}")
-            32
-        }
+        return getProfilePrefs(profile).getInt(DolbyConstants.PREF_STEREO_WIDENING, 32)
     }
 
     fun setStereoWideningAmount(profile: Int, amount: Int) {
