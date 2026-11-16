@@ -41,7 +41,6 @@
     <string name="dolby_reset_all_toast">Tüm profiller başarıyla sıfırlandı</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Surround sanallaştırıcı gücü</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Diyalog güçlendirici seviyesi</string>
-    <string name="dolby_notification_listener_label">Dolby Atmos Servisi</string>
     <string name="loading">Yükleniyor...</string>
 
     <!-- Dolby profiles -->

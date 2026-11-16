@@ -45,7 +45,6 @@
     <string name="dolby_reset_all_toast">Succesfully reset all profiles</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Surround virtualizer Strength</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Dialogue enhancer Strength</string>
-    <string name="dolby_notification_listener_label">Dolby Atmos Service</string>
     <string name="loading">Loading...</string>
     <string name="dolby_read_only">Read-only</string>
 
@@ -156,11 +155,6 @@
     <string name="preset_import_failed">Import failed</string>
 
     <!-- Notification Access -->
-    <string name="notification_access_required">Notification Access Required</string>
-    <string name="notification_access_required_desc">Enable notification access to keep Dolby Atmos running in the background and allow automatic profile switching.</string>
-    <string name="enable_notification_access">Enable Notification Access</string>
-    <string name="enable_notification_access_desc">Enable notification access to keep Dolby Atmos running in the background and allow automatic profile switching.</string>
-    <string name="notification_access_permission_details">This permission allows Dolby Atmos to:\n\n• Run continuously in the background\n• Automatically switch audio profiles\n• Monitor foreground apps\n\nYour notifications will not be read or modified.</string>
     <string name="open_settings">Open Settings</string>
     <string name="cancel">Cancel</string>
 

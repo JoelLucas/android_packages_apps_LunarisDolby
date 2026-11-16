@@ -227,10 +227,6 @@ private fun ModernDolbySettingsContent(
         }
 
         item {
-            NotificationListenerPermissionCard()
-        }
-
-        item {
             AnimatedVisibility(
                 visible = state.settings.enabled,
                 enter = fadeIn() + expandVertically(),
