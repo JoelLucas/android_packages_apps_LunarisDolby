@@ -32,6 +32,7 @@ class DolbyEffectService : Service() {
     private lateinit var repository: DolbyRepository
     private lateinit var deviceStateManager: DeviceStateManager
     private var previousActiveDevice: AudioDeviceInfo? = null
+    private var playing = false
 
     private val audioDeviceCallback = object : AudioDeviceCallback() {
         override fun onAudioDevicesAdded(addedDevices: Array<AudioDeviceInfo>) {
@@ -54,16 +55,20 @@ class DolbyEffectService : Service() {
 
     private val playbackCallback = object : AudioManager.AudioPlaybackCallback() {
         override fun onPlaybackConfigChanged(configs: MutableList<AudioPlaybackConfiguration>?) {
+            // Once when playback starts after silence. The callback fires on every change of any
+            // player (a notification sound, a game's streams, a pause), and each apply wrote the
+            // whole profile to the DAP effect again while audio was playing.
             val isActive = configs?.any { it.isActive } == true
-            if (isActive) {
+            if (isActive && !playing) {
                 repository.applySavedState()
             }
+            playing = isActive
         }
     }
 
     override fun onCreate() {
         super.onCreate()
-        repository = DolbyRepository(this)
+        repository = DolbyRepository.get(this)
         deviceStateManager = DeviceStateManager(this)
         val currentDevice = getCurrentOutputDevice()
         if (currentDevice != null) {

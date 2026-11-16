@@ -20,7 +20,7 @@ import kotlinx.coroutines.cancelChildren
 
 class DolbyViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = DolbyRepository(application)
+    private val repository = DolbyRepository.get(application)
 
     private val _uiState = MutableStateFlow<DolbyUiState>(DolbyUiState.Loading)
     val uiState: StateFlow<DolbyUiState> = _uiState.asStateFlow()
@@ -363,7 +363,6 @@ class DolbyViewModel(application: Application) : AndroidViewModel(application) {
         speakerStateJob = null
         profileChangeJob?.cancel()
         profileChangeJob = null
-        repository.close()
         super.onCleared()
     }
     
