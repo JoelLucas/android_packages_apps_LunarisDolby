@@ -54,7 +54,10 @@ class AppProfileMonitorService : Service() {
     override fun onCreate() {
         super.onCreate()
         appProfileManager = AppProfileManager(this)
-        dolbyRepository = DolbyRepository.get(this)
+        dolbyRepository = DolbyRepository.getOrNull(this) ?: run {
+            stopSelf()
+            return
+        }
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         
         val prefs = getSharedPreferences("dolby_prefs", Context.MODE_PRIVATE)
@@ -97,6 +100,7 @@ class AppProfileMonitorService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (!::dolbyRepository.isInitialized) return START_NOT_STICKY
         when (intent?.action) {
             ACTION_START_MONITORING -> startMonitoring()
             ACTION_STOP_MONITORING -> stopMonitoring()

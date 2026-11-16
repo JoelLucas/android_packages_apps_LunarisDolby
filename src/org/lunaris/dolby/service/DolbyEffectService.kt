@@ -68,7 +68,10 @@ class DolbyEffectService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        repository = DolbyRepository.get(this)
+        repository = DolbyRepository.getOrNull(this) ?: run {
+            stopSelf()
+            return
+        }
         deviceStateManager = DeviceStateManager(this)
         val currentDevice = getCurrentOutputDevice()
         if (currentDevice != null) {
@@ -146,12 +149,14 @@ class DolbyEffectService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (!::repository.isInitialized) return START_NOT_STICKY
         repository.applySavedState()
         return START_STICKY
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        if (!::repository.isInitialized) return
         if (isDeviceStateMemoryEnabled) {
             previousActiveDevice?.let { device ->
                 val key = deviceStateManager.deviceKey(device)

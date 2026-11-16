@@ -1063,6 +1063,19 @@ class DolbyRepository private constructor(private val context: Context) : AutoCl
             shared ?: synchronized(this) {
                 shared ?: DolbyRepository(context.applicationContext).also { shared = it }
             }
+
+        /**
+         * [get], or null when the DAP effect cannot be made (no effect engine yet early in boot).
+         * For the services: they start at boot in this persistent process, and a throw from their
+         * onCreate would crash it, and with it restart them into the same throw.
+         */
+        fun getOrNull(context: Context): DolbyRepository? =
+            try {
+                get(context)
+            } catch (e: Exception) {
+                Log.e(TAG, "Cannot create the DAP effect", e)
+                null
+            }
         private const val EFFECT_PRIORITY = 100
         
         private const val BASS_GAIN_MULTIPLIER = 1.4f
