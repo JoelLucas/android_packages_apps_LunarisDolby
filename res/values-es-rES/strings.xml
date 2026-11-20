@@ -45,7 +45,6 @@
     <string name="dolby_reset_all_toast">Todos los perfiles se han restablecido correctamente</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Intensidad del virtualizador envolvente</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Intensidad del mejorador de diálogos</string>
-    <string name="dolby_notification_listener_label">Servicio Dolby Atmos</string>
     <string name="loading">Cargando…</string>
 
     <!-- Dolby profiles -->
@@ -146,11 +145,6 @@
     <string name="preset_import_failed">Error al importar</string>
 
     <!-- Notification Access -->
-    <string name="notification_access_required">Acceso a notificaciones requerido</string>
-    <string name="notification_access_required_desc">Habilita el acceso a notificaciones para mantener Dolby Atmos en segundo plano y permitir el cambio automático de perfiles.</string>
-    <string name="enable_notification_access">Habilitar acceso a notificaciones</string>
-    <string name="enable_notification_access_desc">Habilita el acceso a notificaciones para mantener Dolby Atmos en segundo plano y permitir el cambio automático de perfiles.</string>
-    <string name="notification_access_permission_details">Este permiso permite a Dolby Atmos:\n\n• Ejecutarse continuamente en segundo plano\n• Cambiar automáticamente los perfiles de audio\n• Supervisar las aplicaciones en primer plano\n\nTus notificaciones no se leerán ni modificarán.</string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="cancel">Cancelar</string>
 

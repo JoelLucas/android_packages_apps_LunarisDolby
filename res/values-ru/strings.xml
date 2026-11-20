@@ -45,7 +45,6 @@
     <string name="dolby_reset_all_toast">Все профили успешно сброшены</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Интенсивность объёма</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Уровень усиления речи</string>
-    <string name="dolby_notification_listener_label">Служба Dolby Atmos</string>
     <string name="loading">Загрузка…</string>
     <string name="dolby_read_only">Только чтение</string>
 
@@ -156,11 +155,6 @@
     <string name="preset_import_failed">Ошибка импорта</string>
 
     <!-- Notification Access -->
-    <string name="notification_access_required">Нужен доступ к уведомлениям</string>
-    <string name="notification_access_required_desc">Разрешите доступ к уведомлениям для фоновой работы Dolby Atmos и автопереключения профилей.</string>
-    <string name="enable_notification_access">Разрешить доступ</string>
-    <string name="enable_notification_access_desc">Нужно для фоновой работы и автопереключения профилей.</string>
-    <string name="notification_access_permission_details">Это разрешение позволяет Dolby Atmos:\n\n• Работать постоянно в фоновом режиме\n• Автоматически переключать аудиопрофили\n• Отслеживать активные приложения\n\nВаши уведомления не читаются и не изменяются.</string>
     <string name="open_settings">Открыть настройки</string>
     <string name="cancel">Отмена</string>
 

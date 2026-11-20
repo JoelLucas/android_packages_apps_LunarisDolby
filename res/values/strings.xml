@@ -45,7 +45,6 @@
     <string name="dolby_reset_all_toast">Succesfully reset all profiles</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Surround virtualizer Strength</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Dialogue enhancer Strength</string>
-    <string name="dolby_notification_listener_label">Dolby Atmos Service</string>
     <string name="loading">Loading...</string>
     <string name="dolby_read_only">Read-only</string>
 
@@ -156,11 +155,6 @@
     <string name="preset_import_failed">Import failed</string>
 
     <!-- Notification Access -->
-    <string name="notification_access_required">Notification Access Required</string>
-    <string name="notification_access_required_desc">Enable notification access to keep Dolby Atmos running in the background and allow automatic profile switching.</string>
-    <string name="enable_notification_access">Enable Notification Access</string>
-    <string name="enable_notification_access_desc">Enable notification access to keep Dolby Atmos running in the background and allow automatic profile switching.</string>
-    <string name="notification_access_permission_details">This permission allows Dolby Atmos to:\n\n• Run continuously in the background\n• Automatically switch audio profiles\n• Monitor foreground apps\n\nYour notifications will not be read or modified.</string>
     <string name="open_settings">Open Settings</string>
     <string name="cancel">Cancel</string>
 
@@ -274,4 +268,29 @@
     <string name="lab_stage_correction">Correction</string>
     <string name="lab_stage_compressor">Compressor</string>
     <string name="lab_stage_boost">Boost</string>
+    <string name="bt_title">Bluetooth audio</string>
+    <string name="bt_none">Connect Bluetooth headphones to change their codec and sample rate.</string>
+    <string name="bt_codec">Codec</string>
+    <string name="bt_codec_auto">Automatic</string>
+    <string name="bt_sample_rate">Sample rate</string>
+    <string name="bt_bits">Bits per sample</string>
+    <string name="bt_channels">Channel mode</string>
+    <string name="bt_channel_mono">Mono</string>
+    <string name="bt_channel_stereo">Stereo</string>
+    <string name="bt_khz">%1$s kHz</string>
+    <string name="bt_bits_value">%1$d-bit</string>
+    <string name="bt_ldac_quality">LDAC playback quality</string>
+    <string name="bt_ldac_audio">Audio quality</string>
+    <string name="bt_ldac_balanced">Balanced</string>
+    <string name="bt_ldac_connection">Connection</string>
+    <string name="bt_ldac_adaptive">Adaptive</string>
+    <string name="bt_hint">Only what both the headphones and the phone support is listed. The stream restarts when a setting changes, so the sound can cut for a moment.</string>
+    <string name="bt_optional">High quality audio</string>
+    <string name="bt_optional_summary">Use the best codec the headphones support instead of SBC</string>
+    <string name="bt_kbps">%1$d kbps</string>
+    <string name="bt_lhdc_quality">LHDC bit rate</string>
+    <string name="bt_lhdc_ll">Low latency</string>
+    <string name="bt_lhdc_ll_summary">Less delay for games and video, needs headphone support</string>
+    <string name="bt_aac_vbr">AAC variable bit rate</string>
+    <string name="bt_aac_vbr_summary">Let the encoder change the bit rate with the music</string>
 </resources>

@@ -45,7 +45,6 @@
     <string name="dolby_reset_all_toast">Pomyślnie zresetowano wszystkie profile</string>
     <string name="dolby_hp_virtualizer_dolby_strength">Siła wirtualizacji przestrzennej</string>
     <string name="dolby_dialogue_enhancer_dolby_strength">Siła wzmocnienia dialogów</string>
-    <string name="dolby_notification_listener_label">Usługa Dolby Atmos</string>
     <string name="loading">Ładowanie...</string>
     <string name="dolby_read_only">Tylko do odczytu</string>
 
@@ -147,11 +146,6 @@
     <string name="preset_import_failed">Import nie powiódł się</string>
 
     <!-- Notification Access -->
-    <string name="notification_access_required">Wymagany dostęp do powiadomień</string>
-    <string name="notification_access_required_desc">Włącz dostęp do powiadomień, aby Dolby Atmos działał w tle i umożliwić automatyczne przełączanie profili.</string>
-    <string name="enable_notification_access">Włącz dostęp do powiadomień</string>
-    <string name="enable_notification_access_desc">Włącz dostęp do powiadomień, aby Dolby Atmos działał w tle i umożliwić automatyczne przełączanie profili.</string>
-    <string name="notification_access_permission_details">To uprawnienie pozwala Dolby Atmos na:\n\n• Ciągłe działanie w tle\n• Automatyczne przełączanie profili dźwięku\n• Monitorowanie aplikacji na pierwszym planie\n\nTwoje powiadomienia nie będą odczytywane ani modyfikowane.</string>
     <string name="open_settings">Otwórz ustawienia</string>
     <string name="cancel">Anuluj</string>
 

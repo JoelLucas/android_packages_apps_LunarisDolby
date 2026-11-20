@@ -20,7 +20,7 @@ import kotlinx.coroutines.cancelChildren
 
 class EqualizerViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = DolbyRepository(application)
+    private val repository = DolbyRepository.get(application)
     private val context = application
 
     private val _uiState = MutableStateFlow<EqualizerUiState>(EqualizerUiState.Loading)
@@ -335,7 +335,6 @@ class EqualizerViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.coroutineContext.cancelChildren()
         profileChangeJob?.cancel()
         profileChangeJob = null
-        repository.close()
         super.onCleared()
     }
     

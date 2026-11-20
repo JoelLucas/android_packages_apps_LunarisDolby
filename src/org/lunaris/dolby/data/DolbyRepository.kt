@@ -20,7 +20,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class DolbyRepository(private val context: Context) : AutoCloseable {
+/**
+ * The DAP state and its effect handle. One per process, through [get]: every screen, service, the
+ * tile and the summary provider used to make their own, so each held its own DAP handle on
+ * session 0. The handles took control from each other at the same priority, and every one that
+ * lost it recreated the effect and wrote the whole profile again; the provider's, made on every
+ * Settings query, were never released.
+ */
+class DolbyRepository private constructor(private val context: Context) : AutoCloseable {
 
     private val audioManager = context.getSystemService(AudioManager::class.java)
     private var dolbyEffect = createDolbyEffect()
@@ -51,6 +58,7 @@ class DolbyRepository(private val context: Context) : AutoCloseable {
         }
     }
 
+    @Synchronized
     private fun checkEffect() {
         if (isReleased) {
             DolbyConstants.dlog(TAG, "Repository released, skipping effect check")
@@ -1041,24 +1049,33 @@ class DolbyRepository(private val context: Context) : AutoCloseable {
         }
     }
     
-    private fun release() {
-        if (!isReleased) {
-            DolbyConstants.dlog(TAG, "Releasing repository resources")
-            isReleased = true
-            try {
-                dolbyEffect.release()
-            } catch (e: Exception) {
-                DolbyConstants.dlog(TAG, "Error releasing effect: ${e.message}")
-            }
-        }
-    }
-    
-    override fun close() {
-        release()
-    }
+    // The repository is shared by the whole process and lives as long as it does (the app is
+    // persistent), so a caller that is done with it has nothing to release
+    override fun close() {}
 
     companion object {
         private const val TAG = "DolbyRepository"
+
+        @Volatile private var shared: DolbyRepository? = null
+
+        /** The process's repository. */
+        fun get(context: Context): DolbyRepository =
+            shared ?: synchronized(this) {
+                shared ?: DolbyRepository(context.applicationContext).also { shared = it }
+            }
+
+        /**
+         * [get], or null when the DAP effect cannot be made (no effect engine yet early in boot).
+         * For the services: they start at boot in this persistent process, and a throw from their
+         * onCreate would crash it, and with it restart them into the same throw.
+         */
+        fun getOrNull(context: Context): DolbyRepository? =
+            try {
+                get(context)
+            } catch (e: Exception) {
+                Log.e(TAG, "Cannot create the DAP effect", e)
+                null
+            }
         private const val EFFECT_PRIORITY = 100
         
         private const val BASS_GAIN_MULTIPLIER = 1.4f
